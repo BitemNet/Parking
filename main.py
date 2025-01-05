@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return "<h1>Welcom into Parking app</h1>"
+    user_agent = request.headers.get('User-Agent')
+    return f"<h1>Welcome into Parking app</h1>\n<p>Your browser is {user_agent}</p>"
 
 
 @app.route('/user/<name>')
